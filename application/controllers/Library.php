@@ -9,7 +9,7 @@ class Library extends CI_Controller {
 	}
 	 public function home(){
     $data = array();
-    $data['title'] 		= 'Library Management System ele'; // Load Page Title
+    $data['title'] 		= 'Billing System'; // Load Page Title
     $data['header'] 	= $this->load->view('inc/header', $data , TRUE); // Load Header Part
     $data['sidebar'] 	= $this->load->view('inc/sidebar', '' , TRUE);// Load Sidebar Part
     $data['content'] 	= $this->load->view('inc/content', '' , TRUE); // Load Content Part
