@@ -1,4 +1,4 @@
-<H2>Add Student</h2>
+<H2>Add Product</h2>
 			<hr/>
 		
          <?php
@@ -10,35 +10,36 @@
         ?>
        	
         <div class="panel-body" style="width:600px;">
-            <form action="<?php echo base_url();?>student/addstudentform" method="post">
+            <form action="<?php echo base_url();?>product/addproductform" method="post">
                 <div class="form-group">
-                    <label>Employee Name</label>
-                    <input type="text" name="studentname" class="form-control span12">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control span12">
                 </div>
+                
                 <div class="form-group">
-                    <label>Department</label>
- <select name="department">
+                    <label>Category</label>
+ <select name="cat">
  <option value="Select One">Select One</option>
  <?php
- foreach ($departmentdata as $ddata) {
+ foreach ($catdata as $ddata) {
  ?>
-<option value="<?php echo $ddata->did;?>"><?php echo $ddata->department;?></option>
+<option value="<?php echo $ddata->id;?>"><?php echo $ddata->name;?></option>
  
 <?php } ?>
 
 </select>
                 </div>
                 <div class="form-group">
-                    <label>Roll No.</label>
-                    <input type="text" name="rollnumber" class="form-control span12">
+                    <label>Unit</label>
+                    <input type="text" name="unit" class="form-control span12">
                 </div>
 				<div class="form-group">
-                    <label>Reg. No.</label>
-                    <input type="text" name="regnumber" class="form-control span12">
+                    <label>Tax Type</label>
+                    <input type="text" name="tax" class="form-control span12">
                 </div>
                 <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" name="phone" class="form-control span12">
+                    <label>Rate</label>
+                    <input type="text" name="rate" class="form-control span12">
                 </div>
                 <div class="form-group">
 				<input type="submit"class="btn btn-primary" value="Submit"> 

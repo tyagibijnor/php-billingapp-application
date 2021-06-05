@@ -17,38 +17,38 @@ class Product extends CI_Controller {
     $data['title'] = 'Add New Product';
     $data['header'] 	= $this->load->view('inc/header', $data , TRUE); // Load Header Part
     $data['sidebar'] 	= $this->load->view('inc/sidebar', '' , TRUE);// Load Sidebar Part
-    $data['productdata']    = $this->product_model->getProductData();
-    $data['unitdata']    = $this->unit_model->getUnitData();
-    $data['catdata']    = $this->cat_model->getCatData();
-    $data['taxdata']    = $this->tax_model->getTaxData();
+    #$data['productdata']    = $this->product_model->getProductData();
+    #$data['unitdata']    = $this->unit_model->getUnitData();
+    #$data['catdata']    = $this->cat_model->getCatData();
+    #$data['taxdata']    = $this->tax_model->getTaxData();
     $data['content'] = $this->load->view('inc/productadd', $data , TRUE); // Load Content Part
     $data['footer'] 	= $this->load->view('inc/footer', '' , TRUE); // Load Footer Part
     $this->load->view('home', $data); // Load one page which i create in our main view folder.
    }
    public function addproductform(){
-    $data['studentname'] = $this->input->post('studentname');
-    $data['department'] = $this->input->post('department');
-    $data['rollnumber'] = $this->input->post('rollnumber');
-    $data['regnumber'] = $this->input->post('regnumber');
-    $data['phone'] = $this->input->post('phone');
+    $data['name'] = $this->input->post('name');
+    $data['unit'] = $this->input->post('unit');
+    $data['tax'] = $this->input->post('tax');
+    $data['cat'] = $this->input->post('cat');
+    $data['rate'] = $this->input->post('rate');
 
-    $studentname = $data['studentname'];
-    $department = $data['department'];
-    $rollnumber = $data['rollnumber'];
-    $regnumber = $data['regnumber'];
-    $phone = $data['phone'];
-    if(empty($studentname) || empty($department) || empty($rollnumber) || empty($regnumber) || empty($phone)) {
+    $name = $data['name'];
+    $unit = $data['unit'];
+    $tax = $data['tax'];
+    $cat = $data['cat'];
+    $rate = $data['rate'];
+    if(empty($name) || empty($unit) || empty($tax) || empty($cat) || empty($rate)) {
         $sdata=array();
         $sdata['msg'] = '<span style="color:red">Empty Filed not allowed</span>';
         $this->session->set_flashdata($sdata);
-        redirect("student/addstudent");
+        redirect("product/addproduct");
     }
     else {
-        $this->student_model->AddStudentData($data);
+        $this->product_model->AddProductData($data);
         $sdata=array();
         $sdata['msg'] = '<span style="color:green">Data added Succesfully</span>';
         $this->session->set_flashdata($sdata);
-        redirect("student/addstudent");
+        redirect("product/addproduct");
     }
 
     }
