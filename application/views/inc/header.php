@@ -18,7 +18,7 @@
 <body class=" theme-blue">
 
     <div class="navbar navbar-default" role="navigation">
-         <div class="navbar-header custommenu">Management System</div>
+         <div class="navbar-header custommenu">Billing System</div>
 
         <!--<div class="navbar-collapse collapse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">

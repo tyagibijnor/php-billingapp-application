@@ -1,4 +1,4 @@
  <div class="homesection">
-            <h2>Management System</h2>
+            <h2>Billing System</h2>
        </div>
 <div style="clear:both;"/>
