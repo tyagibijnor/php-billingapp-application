@@ -6,29 +6,20 @@ class Product_Model extends CI_Model {
 	public function AddProductData($data)
 	{
 		// $this->db->db_debug = true;
-		if($this->db->insert('tbl_product',$data))
-		{ return true;}
-		else {
-			die('ffff');
-			echo $this->db->error();
-			die('g');
-		} 
+		$this->db->insert('tbl_product',$data);
 	}
 	public function getProductData()
 	{
-
-
 		$this->db->select('*');
 		$this->db->from('tbl_product');
 		$this->db->order_by('id','desc');
 		$qresult = $this->db->get();
 		$result = $qresult->result();
 		return $result;
-
 	}
-	public function getProductId($id) {
-
-		$this->db->select('*');
+	public function getProductId($id)
+	{
+ 		$this->db->select('*');
 		$this->db->from('tbl_product');
 		$this->db->where('id',$id);
 		$qresult = $this->db->get();
