@@ -27,6 +27,8 @@ class Product extends CI_Controller {
     $this->load->view('home', $data); // Load one page which i create in our main view folder.
    }
    public function addproductform(){
+      print_r($_POST);
+      die;
     $data['name'] = $this->input->post('name');
     $data['unit'] = $this->input->post('unit');
     $data['tax'] = $this->input->post('tax');
