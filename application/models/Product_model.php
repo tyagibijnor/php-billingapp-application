@@ -5,7 +5,14 @@ class Product_Model extends CI_Model {
 
 	public function AddProductData($data)
 	{
-		$this->db->insert('tbl_product',$data);
+		// $this->db->db_debug = true;
+		if($this->db->insert('tbl_product',$data))
+		{ return true;}
+		else {
+			die('ffff');
+			echo $this->db->error();
+			die('g');
+		} 
 	}
 	public function getProductData()
 	{

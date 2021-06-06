@@ -1,10 +1,10 @@
 <H2>Add Product</h2>
         <hr/>
-    
+       
         <?php
         $msg=$this->session->flashdata('msg');
     if(isset($msg)) {
-        echo $msg;
+      echo $msg;
         # code...
     }
     ?>
@@ -12,8 +12,8 @@
     <div class="panel-body" style="width:600px;">
         <form action="<?php echo base_url();?>product/addproductform" method="post">
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control span12">
+                <label>Name</label> <?php echo validation_errors(); ?>
+                <input type="text", placeholder = "Name", name="name", class="form-control span12" />
             </div>
             <div class="form-group">
                 <label>Unit</label>

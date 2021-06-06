@@ -10,8 +10,7 @@ class Product extends CI_Controller {
     $this->load->model("category_model");
     $this->load->model("unit_model");
     $this->load->model("tax_model");
-    $this->load->model("student_model");
-    $this->load->model("department_model");
+    $this->load->library('form_validation');
     $data = array();
     }
     public function addproduct(){
@@ -27,27 +26,35 @@ class Product extends CI_Controller {
     $this->load->view('home', $data); // Load one page which i create in our main view folder.
    }
    public function addproductform(){
-      print_r($_POST);
-      die;
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('name' , 'Name' , 'required|is_unique[tbl_product.name]');
+    if($this->form_validation->run()==FALSE) {
+      $sdata['msg'] = '<span style="color:red">'.validation_errors().'</span>';
+        $this->session->set_flashdata($sdata);
+        redirect("product/addproduct");
+        
+    }
+    /* if(validation_errors()) { print_r(validation_errors();); die; } */
+
     $data['name'] = $this->input->post('name');
     $data['unit'] = $this->input->post('unit');
     $data['tax'] = $this->input->post('tax');
     $data['cat'] = $this->input->post('cat');
     $data['rate'] = $this->input->post('rate');
-
     $name = $data['name'];
     $unit = $data['unit'];
     $tax = $data['tax'];
     $cat = $data['cat'];
     $rate = $data['rate'];
-    if(empty($name) || empty($unit) || empty($tax) || empty($cat) || empty($rate)) {
+    if(empty($name)) { // || empty($unit) || empty($tax) || empty($cat) || empty($rate)) {
         $sdata=array();
         $sdata['msg'] = '<span style="color:red">Empty Filed not allowed</span>';
         $this->session->set_flashdata($sdata);
         redirect("product/addproduct");
     }
     else {
-        $this->product_model->AddProductData($data);
+        $result = $this->product_model->AddProductData($data);
+        if($result) { print_r($result);}
         $sdata=array();
         $sdata['msg'] = '<span style="color:green">Data added Succesfully</span>';
         $this->session->set_flashdata($sdata);
