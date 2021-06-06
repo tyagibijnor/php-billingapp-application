@@ -9,6 +9,7 @@ class Product extends CI_Controller {
     $this->load->model("product_model");
     $this->load->model("category_model");
     $this->load->model("unit_model");
+    $this->load->model("tax_model");
     $this->load->model("student_model");
     $this->load->model("department_model");
     $data = array();
@@ -17,10 +18,10 @@ class Product extends CI_Controller {
     $data['title'] = 'Add New Product';
     $data['header'] 	= $this->load->view('inc/header', $data , TRUE); // Load Header Part
     $data['sidebar'] 	= $this->load->view('inc/sidebar', '' , TRUE);// Load Sidebar Part
-    #$data['productdata']    = $this->product_model->getProductData();
-    #$data['unitdata']    = $this->unit_model->getUnitData();
-    #$data['catdata']    = $this->cat_model->getCatData();
-    #$data['taxdata']    = $this->tax_model->getTaxData();
+    $data['productdata']    = $this->product_model->getProductData();
+    $data['unitdata']    = $this->unit_model->getUnitData();
+    $data['catdata']    = $this->category_model->getCategoryData();
+    $data['taxdata']    = $this->tax_model->getTaxData();
     $data['content'] = $this->load->view('inc/productadd', $data , TRUE); // Load Content Part
     $data['footer'] 	= $this->load->view('inc/footer', '' , TRUE); // Load Footer Part
     $this->load->view('home', $data); // Load one page which i create in our main view folder.

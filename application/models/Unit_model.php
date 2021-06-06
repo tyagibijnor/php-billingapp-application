@@ -9,13 +9,13 @@ class Unit_Model extends CI_Model {
 
 		$this->db->insert('tbl_student',$data);
 	}
-	public function getStudentData()
+	public function getUnitData()
 	{
 
 
 		$this->db->select('*');
-		$this->db->from('tbl_student');
-		$this->db->order_by('sid','desc');
+		$this->db->from('tbl_unit');
+		$this->db->order_by('id','desc');
 		$qresult = $this->db->get();
 		$result = $qresult->result();
 		return $result;
