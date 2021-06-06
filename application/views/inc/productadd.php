@@ -51,7 +51,7 @@ foreach ($taxdata as $td) {
 ?>
 <option value="<?php echo $td->id;?>"><?php echo $td->name;?></option>
 
-<?php } ?>
+<?php }  ?>
 
 </select>
             </div>
