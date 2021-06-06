@@ -1,24 +1,23 @@
-<H2>Add Product</h2>
+<h2>Add Product</h2>
         <hr/>
-       
         <?php
         $msg=$this->session->flashdata('msg');
-    if(isset($msg)) {
-      echo $msg;
-        # code...
-    }
-    ?>
-    
+         if(isset($msg)) { 
+             echo $msg;
+             //echo '<script type="text/javascript">alert("'.$msg.'"));</script>';
+             
+         }?> 
+
     <div class="panel-body" style="width:600px;">
         <form action="<?php echo base_url();?>product/addproductform" method="post">
             <div class="form-group">
-                <label>Name</label> <?php echo validation_errors(); ?>
+                <label>Name</label>
                 <input type="text", placeholder = "Name", name="name", class="form-control span12" />
             </div>
             <div class="form-group">
                 <label>Unit</label>
 <select name="unit" class="form-control span12">
-<option value="Select One">Select One</option>
+<option value="" disabled selected>Select Unit</option>
 <?php
 foreach ($unitdata as $ud) {
 ?>
@@ -31,7 +30,7 @@ foreach ($unitdata as $ud) {
             <div class="form-group">
                 <label>Category</label>
 <select name="cat" class="form-control span12">
-<option value="Select One">Select One</option>
+<option value="" disabled selected>Select Category</option>
 <?php
 foreach ($catdata as $cd) {
 ?>
@@ -45,7 +44,7 @@ foreach ($catdata as $cd) {
             <div class="form-group">
                 <label>Tax</label>
 <select name="tax" class="form-control span12">
-<option value="Select One">Select One</option>
+<option value="" disabled selected>Select Tax</option>
 <?php
 foreach ($taxdata as $td) {
 ?>

@@ -27,9 +27,14 @@ class Product extends CI_Controller {
    }
    public function addproductform(){
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('name' , 'Name' , 'required|is_unique[tbl_product.name]');
+    $this->form_validation->set_rules('name' , 'Name' , 'trim|required|is_unique[tbl_product.name]');
+    $this->form_validation->set_rules('unit' , 'Unit' , 'trim|required');
+    $this->form_validation->set_rules('tax' , 'Tax' , 'trim|required');
+    $this->form_validation->set_rules('cat' , 'Category' , 'trim|required');
+    $this->form_validation->set_rules('rate' , 'Rate' , 'is_numeric|greater_than[0]|required');
     if($this->form_validation->run()==FALSE) {
       $sdata['msg'] = '<span style="color:red">'.validation_errors().'</span>';
+      //$sdata['msg'] = validation_errors();
         $this->session->set_flashdata($sdata);
         redirect("product/addproduct");
         
