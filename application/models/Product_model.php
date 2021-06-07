@@ -12,12 +12,13 @@ class Product_Model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('tbl_product');
+		$this->db->where('status',1);
 		$this->db->order_by('id','desc');
 		$qresult = $this->db->get();
 		$result = $qresult->result();
 		return $result;
 	}
-	public function getProductId($id)
+	public function getProductById($id)
 	{
  		$this->db->select('*');
 		$this->db->from('tbl_product');
@@ -27,19 +28,20 @@ class Product_Model extends CI_Model {
 		return $result;
 	}
 	public function UpdateProductData($data) {
-
 		$this->db->set('name',$data['name']);
 		$this->db->set('unit',$data['unit']);
 		$this->db->set('rate',$data['rate']);
 		$this->db->set('cat',$data['cat']);
 		$this->db->set('tax',$data['tax']);
-		$this->db->where('sid',$data['id']);
+		$this->db->where('id',$data['id']);
 		$this->db->update('tbl_product');
 	}
 
 	public function deleteProductById($id){
+		$this->db->set('status',0);
 		$this->db->where('id',$id);
-		$this->db->delete('tbl_product');
+		//$this->db->delete('tbl_product');
+		$this->db->update('tbl_product');
 	}
 
 	public function getProduct($Id){

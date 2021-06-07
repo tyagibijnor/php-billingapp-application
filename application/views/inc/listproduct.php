@@ -57,9 +57,9 @@
       <td><?php echo $pd->rate; ?></td>
     
     <td>
-        <!--   <a href="<?php echo base_url();?>student/editstudent/<?php echo $sdata->sid;?>"><i class="fa fa-pencil"></i></a>
-          <a onclick="return confirm('Are you sure want to delete this record ?');" href="<?php echo base_url();?>student/deletestudent/<?php echo $sdata->sid;?>" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      --> </td>
+        <a href="<?php echo base_url();?>product/editproduct/<?php echo $pd->id;?>"><i class="fa fa-pencil"></i></a>
+          <a onclick="return confirm('Are you sure want to delete this record ?');" href="<?php echo base_url();?>product/deleteproduct/<?php echo $pd->id;?>" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+      </td>
     </tr>
     <?php 
   }
