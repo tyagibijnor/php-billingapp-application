@@ -9,8 +9,6 @@ class Category_Model extends CI_Model {
 	}
 	public function getCategoryData()
 	{
-
-
 		$this->db->select('*');
 		$this->db->from('tbl_category');
 		$this->db->order_by('id','desc');
@@ -39,7 +37,15 @@ class Category_Model extends CI_Model {
 		$this->db->where('id',$id);
 		$this->db->delete('tbl_Category');
 	}
-
+	public function getCategory($Id){
+		$this->db->select('*');
+		$this->db->from('tbl_category');
+		$this->db->where('id',$Id);
+		$qresult = $this->db->get();
+		$result = $qresult->row();
+		return $result;
+		
+	}
 
 }
 

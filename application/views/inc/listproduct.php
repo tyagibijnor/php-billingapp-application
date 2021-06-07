@@ -1,9 +1,8 @@
 <script src="<?php echo base_url();?>lib/jquery.dataTables.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href= "<?php echo base_url();?>lib/jquery.dataTables.css">
 
-<h2>Employee List</h2>
+<h2>Product List</h2>
 			<hr/>
-
        <?php
          $msg=$this->session->flashdata('msg');
         if(isset($msg)) {
@@ -11,58 +10,56 @@
             # code...
         }
         ?>
-
-        
 <table class="display" id="navneet">
   <thead>
     <tr>
-      <th>No</th>
+      <!-- <th>No</th> -->
+      <th>Category</th>
       <th>Name</th>
-      <th>Department</th>
-      <th>EmpCode</th>
-      <th>Reg</th>
-      <th>Phone</th>
+      <th>Unit</th>
+      <th>Tax</th>
+      <th>Rate</th>
       <th style="width: 3.5em;">Action</th>
     </tr>
   </thead>
   <tbody>
     <?php 
     $i =0; 
-    foreach ($studentdata as $sdata) {
-      # code...
-
-      $i++;
+    foreach ($productdata as $pd) {
+        $i++;
     ?>
     <tr>
-      <td><?php echo $i; ?></td>
-      <td><?php echo $sdata->studentname; ?></td>
-
-
-      <td><?php 
-      
-      $depId=$sdata->department;
-      $depRecord=$this->department_model->getDepartment($depId);
-      if (isset($depRecord)) {
-      echo $depRecord->department;      
-  # code...
-      }
-     // print_r($depRecord);
-      
- //echo $sdata->department;      
-
-
-      ?></td>
-      
-
-
-      <td><?php echo $sdata->rollnumber; ?></td>
-      <td><?php echo $sdata->regnumber; ?></td>
-      <td><?php echo $sdata->phone; ?></td>
-      
+      <!-- <td><?php echo $i; ?></td> -->
       <td>
-          <a href="<?php echo base_url();?>student/editstudent/<?php echo $sdata->sid;?>"><i class="fa fa-pencil"></i></a>
-          <a onclick="return confirm('Are you sure want to delete this record ?');" href="<?php echo base_url();?>student/deletestudent/<?php echo $sdata->sid;?>" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+        <?php 
+          $catRecord=$this->category_model->getCategory($pd->cat);
+          if (isset($catRecord)) {
+            echo $catRecord->name;      
+            }
+        ?> 
       </td>
+      <td><?php echo $pd->name; ?></td>
+      <td>
+      <?php 
+          $unitRecord=$this->unit_model->getUnit($pd->unit);
+          if (isset($unitRecord)) {
+            echo $unitRecord->name;      
+            }
+        ?>
+      </td>
+      <td>
+      <?php 
+          $taxRecord=$this->tax_model->getTax($pd->tax);
+          if (isset($taxRecord)) {
+            echo $taxRecord->name;      
+            }
+      ?></td>
+      <td><?php echo $pd->rate; ?></td>
+    
+    <td>
+        <!--   <a href="<?php echo base_url();?>student/editstudent/<?php echo $sdata->sid;?>"><i class="fa fa-pencil"></i></a>
+          <a onclick="return confirm('Are you sure want to delete this record ?');" href="<?php echo base_url();?>student/deletestudent/<?php echo $sdata->sid;?>" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+      --> </td>
     </tr>
     <?php 
   }

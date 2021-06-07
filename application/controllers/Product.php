@@ -67,12 +67,12 @@ class Product extends CI_Controller {
     }
 
     }
-    public function studentlist(){
-    $data['title'] = 'Student List';
+    public function productlist(){
+    $data['title'] = 'Product List';
     $data['header']     = $this->load->view('inc/header', $data , TRUE); // Load Header Part
     $data['sidebar']    = $this->load->view('inc/sidebar', '' , TRUE);// Load Sidebar Part
-    $data['studentdata']    = $this->student_model->getStudentData();
-    $data['content'] = $this->load->view('inc/liststudent', $data , TRUE); // Load Content Part
+    $data['productdata']    = $this->product_model->getProductData();
+    $data['content'] = $this->load->view('inc/listproduct', $data , TRUE); // Load Content Part
     $data['footer']     = $this->load->view('inc/footer', '' , TRUE); // Load Footer Part
     $this->load->view('home', $data); // Load one page which i create in our main view folder.
    }

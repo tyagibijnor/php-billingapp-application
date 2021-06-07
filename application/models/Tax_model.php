@@ -29,19 +29,26 @@ class Tax_Model extends CI_Model {
 	}
 	public function UpdateTaxData($data) {
 
-		$this->db->set('studentname',$data['studentname']);
-		$this->db->set('department',$data['department']);
-		$this->db->set('rollnumber',$data['rollnumber']);
-		$this->db->set('regnumber',$data['regnumber']);
-		$this->db->set('phone',$data['phone']);
-		$this->db->where('sid',$data['sid']);
-		$this->db->update('tbl_student');
+		$this->db->set('name',$data['name']);
+		$this->db->set('value',$data['value']);
+		$this->db->where('id',$data['id']);
+		$this->db->update('tbl_tax');
 	}
 
-	public function deleteStudentById($sid){
-		$this->db->where('sid',$sid);
-		$this->db->delete('tbl_student');
+	public function deleteTaxById($id){
+		$this->db->where('id',$id);
+		$this->db->delete('tbl_tax');
 	}
+	public function getTax($Id){
+		$this->db->select('*');
+		$this->db->from('tbl_tax');
+		$this->db->where('id',$Id);
+		$qresult = $this->db->get();
+		$result = $qresult->row();
+		return $result;
+		
+	}
+
 
 
 }

@@ -42,6 +42,16 @@ class Product_Model extends CI_Model {
 		$this->db->delete('tbl_product');
 	}
 
+	public function getProduct($Id){
+		$this->db->select('*');
+		$this->db->from('tbl_product');
+		$this->db->where('id',$Id);
+		$qresult = $this->db->get();
+		$result = $qresult->row();
+		return $result;		
+	}
+
+
 
 }
 
