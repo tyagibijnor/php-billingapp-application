@@ -7,6 +7,7 @@
             <li><a href="<?php echo base_url();?>product/productlist"><span class="fa fa-caret-right"></span>Product List</a></li>            
             <li><a href="<?php echo base_url();?>department/adddepartment"><span class="fa fa-caret-right"></span>Add Category</a></li>
             <li><a href="<?php echo base_url();?>department/departmentlist"><span class="fa fa-caret-right"></span>Category List</a></li>
+            <li><a href="<?php echo base_url();?>department/adddepartment"><span class="fa fa-caret-right"></span>Add Tax</a></li>
             
           </ul></li>
   </ul>
