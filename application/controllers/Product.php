@@ -122,11 +122,12 @@ class Product extends CI_Controller {
     }
 
   public function deleteproduct($id)  {
+    //$this->db->delete('tbl_product', array('id' => $id));
     $this->product_model->deleteProductById($id);
-    $sdata = array();
+    /*$sdata = array();
     $sdata['msg'] = '<span style="color:red">Record has deleted Successfully</span>';
     $this->session->set_flashdata($sdata);
     redirect("product/productlist");
-
+ */
   }   
 }

@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'library';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['product-list'] = 'product/productlist';
+$route['product-add'] = 'product/addproduct';
+$route['item-list/(:any)']['delete']= "product/deleteproduct/$1";
+//$route['item-list'] = 'item/index';
+//$route['item-list/(:any)']['delete'] = "item/delete/$1";
