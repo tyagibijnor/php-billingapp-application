@@ -36,7 +36,7 @@ class Product extends CI_Controller {
       $sdata['msg'] = '<span style="color:red">'.validation_errors().'</span>';
       //$sdata['msg'] = validation_errors();
         $this->session->set_flashdata($sdata);
-        redirect("product/addproduct");
+        redirect("product-add");
         
     }
     /* if(validation_errors()) { print_r(validation_errors();); die; } */
@@ -55,15 +55,15 @@ class Product extends CI_Controller {
         $sdata=array();
         $sdata['msg'] = '<span style="color:red">Empty Filed not allowed</span>';
         $this->session->set_flashdata($sdata);
-        redirect("product/addproduct");
+        redirect("product-add");
     }
     else {
         $result = $this->product_model->AddProductData($data);
-        if($result) { print_r($result);}
+        /* if($result) { print_r($result);} */
         $sdata=array();
         $sdata['msg'] = '<span style="color:green">Data added Succesfully</span>';
         $this->session->set_flashdata($sdata);
-        redirect("product/addproduct");
+        redirect("product-add");
     }
 
     }
