@@ -55,6 +55,20 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['product-list'] = 'product/productlist';
 $route['product-add'] = 'product/addproduct';
-$route['item-list/(:any)']['delete']= "product/deleteproduct/$1";
+$route['product-delete/(:any)']['delete']= "product/deleteproduct/$1";
+
+$route['cat-add'] = 'category/addcategory';
+$route['cat-list'] = 'category/categorylist';
+$route['cat-delete/(:any)']['delete']= "category/deletecategory/$1";
+
+$route['tax-add'] = 'tax/addtax';
+$route['tax-list'] = 'tax/taxlist';
+$route['tax-delete/(:any)']['delete']= "tax/deletetax/$1";
+
+$route['unit-add'] = 'unit/addunit';
+$route['unit-list'] = 'unit/unitlist';
+$route['unit-delete/(:any)']['delete']= "unit/deleteunit/$1";
+
+
 //$route['item-list'] = 'item/index';
 //$route['item-list/(:any)']['delete'] = "item/delete/$1";
