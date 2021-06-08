@@ -3,48 +3,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Unit_Model extends CI_Model {
 
-	public function AddStudentData($data)
+	public function AddUnitData($data)
 	{
-//			$this->load->model("student_model");
-
 		$this->db->insert('tbl_student',$data);
 	}
-	public function getStudentData()
+
+	public function getUnitData()
 	{
-
-
 		$this->db->select('*');
-		$this->db->from('tbl_student');
-		$this->db->order_by('sid','desc');
+		$this->db->from('tbl_unit');
+		$this->db->order_by('id','desc');
 		$qresult = $this->db->get();
 		$result = $qresult->result();
 		return $result;
-
 	}
-	public function getStudentById($sid) {
+
+	public function getUnitById($id) 	{
 
 		$this->db->select('*');
-		$this->db->from('tbl_student');
-		$this->db->where('sid',$sid);
+		$this->db->from('tbl_unit');
+		$this->db->where('id',$id);
 		$qresult = $this->db->get();
 		$result = $qresult->row();
 		return $result;
 	}
-	public function UpdateStudentData($data) {
+	public function UpdateUnitData($data) {
 
-		$this->db->set('studentname',$data['studentname']);
-		$this->db->set('department',$data['department']);
-		$this->db->set('rollnumber',$data['rollnumber']);
-		$this->db->set('regnumber',$data['regnumber']);
-		$this->db->set('phone',$data['phone']);
-		$this->db->where('sid',$data['sid']);
-		$this->db->update('tbl_student');
+		$this->db->set('name',$data['name']);
+		$this->db->where('sid',$data['id']);
+		$this->db->update('tbl_data');
 	}
 
-	public function deleteStudentById($sid){
-		$this->db->where('sid',$sid);
-		$this->db->delete('tbl_student');
+	public function deleteUnitById($id){
+		$this->db->where('id',$id);
+		$this->db->delete('tbl_unit');
 	}
+
+	public function getUnit($Id){
+		$this->db->select('*');
+		$this->db->from('tbl_unit');
+		$this->db->where('id',$Id);
+		$qresult = $this->db->get();
+		$result = $qresult->row();
+		return $result;
+		
+	}
+
 
 
 }
