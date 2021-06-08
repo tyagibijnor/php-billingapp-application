@@ -9,14 +9,14 @@
          }?> 
 
     <div class="panel-body" style="width:600px;">
-        <form action="<?php echo base_url();?>product/addproductform" method="post">
+        <form name="product_form" id="product_form" action="<?php echo base_url();?>product/addproductform" method="post">
             <div class="form-group">
                 <label>Name</label>
-                <input type="text", placeholder = "Name", name="name", class="form-control span12" />
+                <input type="text", placeholder = "Name", name="name", id="name" class="form-control span12" required />
             </div>
             <div class="form-group">
                 <label>Unit</label>
-<select name="unit" class="form-control span12">
+<select name="unit" id="unit" class="form-control span12">
 <option value="" disabled selected>Select Unit</option>
 <?php
 foreach ($unitdata as $ud) {
@@ -29,7 +29,7 @@ foreach ($unitdata as $ud) {
             </div>
             <div class="form-group">
                 <label>Category</label>
-<select name="cat" class="form-control span12">
+<select name="cat" id="cat" class="form-control span12">
 <option value="" disabled selected>Select Category</option>
 <?php
 foreach ($catdata as $cd) {
@@ -56,11 +56,52 @@ foreach ($taxdata as $td) {
             </div>
             <div class="form-group">
                 <label>Rate</label>
-                <input type="text" name="rate" class="form-control span12">
+                <input type="text" name="rate" id="rate" class="form-control span12" required>
             </div>
             <div class="form-group">
             <input type="submit"class="btn btn-primary" value="Submit"> 
             </div>
-                
+
+    <script src="<?php echo base_url();?>lib/library/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>lib/library/jquery.validate.js"></script>
+    <script src="<?php echo base_url();?>lib/library/additional-methods.min.js"></script>
+    <script>
+        if ($("#product_form").length > 0) {
+            $("#product_form").validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    unit: {
+                        required: true,
+                        },
+                    tax: {
+                        required: true,
+                    },
+                    cat: {
+                        required: true,
+                    },
+                    rate: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Name is required",
+                    },
+                    rate: {
+                        /* email: "It doe not seem valid email", */
+                        required: "Rate is required",
+                        /* maxlength: "Upto 50 characters are allowed", */
+                    },
+                    unit: {
+                        required: "Please, select unit",
+                    },
+                },
+            })
+        }
+    </script>                
         </form>
     </div>			
+
+
