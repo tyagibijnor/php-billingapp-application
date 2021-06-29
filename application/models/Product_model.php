@@ -6,14 +6,15 @@ class Product_Model extends CI_Model {
 	public function AddProductData($data)
 	{
 		// $this->db->db_debug = true;
-		$this->db->insert('tbl_product',$data);
+		echo $this->db->insert('tbl_product',$data);
+		die;
 	}
 	public function getProductData()
 	{
 		$this->db->select('*');
 		$this->db->from('tbl_product');
 		$this->db->where('status',1);
-		$this->db->order_by('id','desc');
+		$this->db->order_by('date','desc');
 		$qresult = $this->db->get();
 		$result = $qresult->result();
 		return $result;
@@ -22,6 +23,7 @@ class Product_Model extends CI_Model {
 	{
  		$this->db->select('*');
 		$this->db->from('tbl_product');
+		$this->db->where('id',$id);
 		$this->db->where('id',$id);
 		$qresult = $this->db->get();
 		$result = $qresult->row();

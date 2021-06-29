@@ -24,6 +24,7 @@
       <th>Unit</th>
       <th>Tax</th>
       <th>Rate</th>
+      <th>Added Date</th>
       <th style="width: 3.5em;">Action</th>
     </tr>
   </thead>
@@ -62,6 +63,7 @@
             }
       ?></td>
       <td><?php echo $pd->rate; ?></td>    
+      <td><?php echo $pd->date; ?></td>    
     <td>
      <!--    <a href="<?php echo base_url();?>product/editproduct/<?php echo $pd->id;?>"><i class="fa fa-pencil"></i></a>
           <a onclick="return confirm('Are you sure want to delete this record ?');" href="<?php echo base_url();?>product/deleteproduct/<?php echo $pd->id;?>" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>

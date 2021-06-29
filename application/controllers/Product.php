@@ -59,7 +59,7 @@ class Product extends CI_Controller {
     }
     else {
         $result = $this->product_model->AddProductData($data);
-        /* if($result) { print_r($result);} */
+        /* if($result) { print_r($result); die;} */
         $sdata=array();
         $sdata['msg'] = '<span style="color:green">Data added Succesfully</span>';
         $this->session->set_flashdata($sdata);
